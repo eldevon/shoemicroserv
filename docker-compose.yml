@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  api:
+    build: ./api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - order
+      - payment
+
+  order:
+    build: ./order
+    ports:
+      - "8001:8001"
+    depends_on:
+      - redis
+
+  payment:
+    build: ./payment
+    ports:
+      - "8002:8002"
+
+      
