@@ -1,16 +1,6 @@
 # shoemicroserv
 A minimal microservices backend for a shoe ecommerce system. Built with Python (FastAPI), Redis, and Celery — structured as decoupled microservices. A prototype backend.
 
-Client
-   │
-   ▼
-[ API Gateway ]          ← orchestrates workflow
-   ├───► [ Order Service ]   ← creates orders + async tasks (Celery)
-   └───► [ Payment Service ] ← simulates payment processing
-           ▲
-           │
-        [ Redis ] ← message broker & Celery result backend
-
 api
 8000
 Entry point (creates order + payment)
